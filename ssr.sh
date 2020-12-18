@@ -633,7 +633,7 @@ Service_SSR(){
 		chkconfig --add ssr
 		chkconfig ssr on
 	else
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/service/ssr_debian -O /etc/init.d/ssr; then
+		if ! wget --no-check-certificate https://github.com/DarrenSong/SSRScripts/blob/main/ssr-chkconfig.sh -O /etc/init.d/ssr; then
 			echo -e "${Error} ShadowsocksR服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/ssr

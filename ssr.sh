@@ -610,7 +610,7 @@ Debian_apt(){
 Download_SSR(){
 	cd "/usr/local/"
 	#wget -N --no-check-certificate "https://github.com/ToyoDAdoubiBackup/shadowsocksr/archive/manyuser.zip"
-	wget -N --no-check-certificate "https://gitee.com/DarrenSong/SSRScripts/blob/main/shadowsocksr-manyuser.zip"
+	wget -N --no-check-certificate "https://gitee.com/DarrenSong/SSRScripts/raw/main/shadowsocksr-manyuser.zip"
 	#git config --global http.sslVerify false
 	#env GIT_SSL_NO_VERIFY=true git clone -b manyuser https://github.com/ToyoDAdoubiBackup/shadowsocksr.git
 	#[[ ! -e ${ssr_folder} ]] && echo -e "${Error} ShadowsocksR服务端 下载失败 !" && exit 1
@@ -634,9 +634,9 @@ Service_SSR(){
 		chkconfig --add ssr
 		chkconfig ssr on
 	elsels
-		#if ! wget --no-check-certificate https://github.com/DarrenSong/SSRScripts/blob/main/ssr-chkconfig.sh -O /etc/init.d/ssr; then
-		#	echo -e "${Error} ShadowsocksR服务 管理脚本下载失败 !" && exit 1
-		#fi
+		if ! wget --no-check-certificate https://raw.githubusercontent.com/DarrenSong/SSRScripts/main/ssr-chkconfig.sh -O /etc/init.d/ssr; then
+			echo -e "${Error} ShadowsocksR服务 管理脚本下载失败 !" && exit 1
+		fi
 		chmod +x /etc/init.d/ssr
 		update-rc.d -f ssr defaults
 	fi
